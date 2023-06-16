@@ -4,10 +4,11 @@
 ## Abstração
 1. Criar uma classe para que a partir dela seja possível instanciar animais.Um animal deve ter um nome, cor, raça, peso, idade.Além dessas características, um animal deve emitir sons e se locomover.
 
-< h5 > Projeto - ./ src / Models / Animais.ts < /h5>
+<h5> Projeto - ./src/Models/Animais.ts </h5>
 
 
-        ```typescript
+```typescript
+
 // NOME DE CLASSE SEMPRE COMEÇANDO COM LETRA MAIUSCULA
 // CLASSE ANIMAIS
 
@@ -28,14 +29,14 @@ export class Animal {
   }
 
 }
+
 ```
 
 
-    < h5 > Arquivo./ src / app.ts < /h5>
+<h5> Arquivo - ./src/app.ts </h5>
 
+```typescript
 
-
-        ```typescript
 // CLASSE ANIMAIS 
 import { Animal } from "./models/Animais";
 
@@ -60,6 +61,7 @@ Gato.Peso = 4;
 
 Gato.emitirSons("miau miau");
 Gato.Locomover(5);
+
 ```
 
 
@@ -67,9 +69,9 @@ Gato.Locomover(5);
 
 3. Criar uma classe que represente um aplicativo que será instalado em um celular.Um aplicativo deve possuir um nome e tamanho em Megabytes.Deve ser possível adicionar vários aplicativos a um celular, desde que possua espaço disponível na memória interna.
 
-< h5 > Projeto./ src / Models / Celular.ts < /h5>
+<h5> Projeto ./src/Models /Celular.ts </h5>
 
-        ```typescript
+```typescript
 // NOME DE CLASSE SEMPRE COMEÇANDO COM LETRA MAIUSCULA
 
 import { Aplicativo } from "./Aplicativo";
@@ -129,9 +131,10 @@ export class Celular {
   }
 }
 ```
-    < h5 > Arquivo./ src / Models / Aplicativo.ts < /h5>
 
-        ```typescript
+<h5> Arquivo ./src/Models/Aplicativo.ts </h5>
+
+```typescript
 
 //Criando classe Aplicativo
 
@@ -142,9 +145,9 @@ export class Aplicativo {
 
 ```
 
-    < h5 > Arquivo./ src / app.ts < /h5>
+<h5> Arquivo ./src/app.ts </h5>
 
-        ```typescript
+```typescript
 // CLASSE CELULAR
 import { Celular } from "./models/Celular";
 
@@ -199,7 +202,7 @@ iphone13.Instalar(Camera);
 console.log(Iphone13);
 ```
 
-    < h4 > Construtores < /h4>
+<h4> Construtores </h4>
 
 Criar um construtor para a classe Aplicativo que inicialize todos os atributos.
 Criar um construtor para a classe Celular que inicialize todos os atributos.Ao construir um celular, o celular deve estar desligado e não deve permitir que seja inicializado com aplicativos.
