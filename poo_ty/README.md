@@ -69,7 +69,7 @@ Gato.Locomover(5);
 
 3. Criar uma classe que represente um aplicativo que será instalado em um celular.Um aplicativo deve possuir um nome e tamanho em Megabytes.Deve ser possível adicionar vários aplicativos a um celular, desde que possua espaço disponível na memória interna.
 
-<h5> Projeto ./src/Models /Celular.ts </h5>
+<h5> Projeto ./src/Models/Celular.ts </h5>
 
 ```typescript
 // NOME DE CLASSE SEMPRE COMEÇANDO COM LETRA MAIUSCULA
