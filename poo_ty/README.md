@@ -202,15 +202,151 @@ iphone13.Instalar(Camera);
 console.log(Iphone13);
 ```
 
-<h4> Construtores </h4>
+<h4>Construtores</h4>
 
-Criar um construtor para a classe Aplicativo que inicialize todos os atributos.
-Criar um construtor para a classe Celular que inicialize todos os atributos.Ao construir um celular, o celular deve estar desligado e não deve permitir que seja inicializado com aplicativos.
-    Encapsulamento
-Alterar a acessibilidade dos atributos das classes Aplicativo e Celular para privados e criar getters e setters para todos, exceto para o atributo ligado.Esse atributo deve ser manipulado pelos métodos ligar e desligar.
-Criar um atributo que indique a data de fabricação de um celular.Essa data deve ser registrada automaticamente e não pode ser alterada.
-Criar uma classe que represente uma uma loja de celulares.Uma loja deve ter um nome, endereço, cidade e uma lista de Celulares disponíveis para venda.Deve ser possível adicionais novos celulares e também listar os celulares disponíveis de forma que não seja possível remover celulares da lista.
+4 - Criar um construtor para a classe Aplicativo que inicialize todos os atributos.
 
+5 - Criar um construtor para a classe Celular que inicialize todos os atributos. Ao construir um celular, o celular deve estar desligado e não deve permitir que seja inicializado com aplicativos.
+
+<h5> ARQUIVO ./SRC/APP.TS </h5>
+
+```typescript
+// import { Animal } from "./models/Animal";
+import { Aplicativo } from "./models/Aplicativo";
+import { Celular } from "./models/Celular";
+
+
+let linkedin = new Aplicativo("Linkedin", 50);
+console.log(linkedin);
+
+let iphone13 = new Celular("Apple", "iPhone 13", 256, 12, "Smartphone");
+iphone13.tipo = "Tijolão";
+iphone13.ligar();
+console.log(iphone13);
+
+if (iphone13.marca === "Apple") {
+  console.log("gasta muita bateria");
+}
+
+iphone13.desligar();
+console.log(iphone13);
+```
+
+<h5>Arquivo ./src/models/Celular.ts</h5>
+
+
+```typescript
+import { Aplicativo } from "./Aplicativo";
+
+export class Celular {
+  private _marca: string;
+  public readonly modelo: string;
+  private readonly _capacidadeMemoriaInterna: number;
+  public qualidadeCamera: number;
+  public tipo: string;
+  public nivelBateria: number;
+  private _ligado: boolean;
+  public aplicativos: Aplicativo[];
+
+  constructor(
+    marca: string,
+    modelo: string,
+    capacidadeMemoriaInterna: number,
+    qualidadeCamera: number,
+    tipo: string
+  ) {
+    this._marca = marca;
+    this.modelo = modelo;
+    this._capacidadeMemoriaInterna = capacidadeMemoriaInterna;
+    this.qualidadeCamera = qualidadeCamera;
+    this.tipo = tipo;
+    this.nivelBateria = 100;
+    this._ligado = false;
+    this.aplicativos = [];
+  }
+
+  public get marca(): string {
+    return this._marca;
+  }
+
+  public get capacidadeMemoriaInterna(): number {
+    return this._capacidadeMemoriaInterna;
+  }
+
+  public fazerLigacao(numero: number) {
+    if (this.nivelBateria > 0) {
+      console.log(this.modelo, "Fazendo ligação para o número", numero);
+      this.consumirBateria(1);
+    }
+  }
+
+  public fotografar() {
+    if (this.nivelBateria > 0) {
+      console.log(this.modelo, "Fotografando");
+      this.consumirBateria(2);
+    }
+  }
+
+  private consumirBateria(consumo: number) {
+    if (this.temBateria()) {
+      this.nivelBateria = 0;
+    } else {
+      this.nivelBateria -= consumo;
+    }
+  }
+
+  private temBateria(): boolean {
+    return this.nivelBateria > 0;
+  }
+
+  public instalar(aplicativo: Aplicativo) {
+    if (this.temMemoriaSuficientePara(aplicativo)) {
+      this.aplicativos.push(aplicativo);
+    }
+  }
+
+  public temMemoriaSuficientePara(aplicativo: Aplicativo) {
+    let memoriaUtilizada = 0;
+
+    for (const app of this.aplicativos) {
+      memoriaUtilizada += app.tamanhoEmMegaBytes;
+    }
+
+    return (
+      aplicativo.tamanhoEmMegaBytes + memoriaUtilizada <=
+      this.capacidadeMemoriaInterna
+    );
+  }
+
+  public ligar() {
+    if (this.temBateria()) {
+      this._ligado = true;
+      console.log("Ligando...");
+    } else {
+      console.log("Sem bateria");
+    }
+  }
+
+  public desligar() {
+    this._ligado = false;
+    console.log("Desligando...");
+  }
+}
+```
+<h5>Arquivo ./src/models/Aplicativo.ts</h5>
+
+
+```typescript
+export class Aplicativo {
+  nome: string;
+  tamanhoEmMegaBytes: number;
+
+  constructor(nome: string, tamanhoEmMegaBytes: number) {
+    this.nome = nome;
+    this.tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+  }
+}
+```
 
 ## Encapsulamento
 
