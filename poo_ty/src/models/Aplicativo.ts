@@ -1,6 +1,9 @@
-//Criando classe Aplicativo
-
 export class Aplicativo {
-    Nome: String;
-    tamanhoEmMegaBytes: Number;
+  nome: string;
+  tamanhoEmMegaBytes: number;
+
+  constructor(nome: string, tamanhoEmMegaBytes: number) {
+    this.nome = nome;
+    this.tamanhoEmMegaBytes = tamanhoEmMegaBytes;
   }
+}
