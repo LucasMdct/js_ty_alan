@@ -1,15 +1,15 @@
 import { Aplicativo } from "./Aplicativo";
-
+////////////////////////////////////////////////////////////////////////////
 export class Celular {
   private _marca: string;
-  public readonly modelo: string;
-  private readonly _capacidadeMemoriaInterna: number;
-  public qualidadeCamera: number;
-  public tipo: string;
-  public nivelBateria: number;
-  private _ligado: boolean;
-  public aplicativos: Aplicativo[];
-
+  private _modelo: string;
+  private _capacidadeMemoriaInterna: number;
+  private _qualidadeCamera: number;
+  private _tipo: string;
+  private _nivelBateria: number;
+  public ligado: boolean;
+  private _aplicativos: Aplicativo[];
+  ////////////////////////////////////////////////////////////////////////////
   constructor(
     marca: string,
     modelo: string,
@@ -18,59 +18,108 @@ export class Celular {
     tipo: string
   ) {
     this._marca = marca;
-    this.modelo = modelo;
+    this._modelo = modelo;
     this._capacidadeMemoriaInterna = capacidadeMemoriaInterna;
-    this.qualidadeCamera = qualidadeCamera;
-    this.tipo = tipo;
-    this.nivelBateria = 100;
-    this._ligado = false;
-    this.aplicativos = [];
+    this._qualidadeCamera = qualidadeCamera;
+    this._tipo = tipo;
+    this._nivelBateria = 100;
+    this.ligado = false;
+    this._aplicativos = [];
   }
-
+  ////////////////////////////////////////////////////////////////////////////
+  public set marca(marca: string) {
+    this._marca = marca;
+  }
   public get marca(): string {
     return this._marca;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set modelo(modelo: string) {
+    this._modelo = modelo;
+  }
+
+  public get modelo(): string {
+    return this._modelo;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set capacidadeMemoriaInterna(capacidadeMemoriaInterna: number) {
+    this._capacidadeMemoriaInterna = capacidadeMemoriaInterna;
   }
 
   public get capacidadeMemoriaInterna(): number {
     return this._capacidadeMemoriaInterna;
   }
+  ////////////////////////////////////////////////////////////////////////////
+  public set qualidadeCamera(qualidadeCamera: number) {
+    this._qualidadeCamera = qualidadeCamera;
+  }
 
+  public get qualidadeCamera(): number {
+    return this._qualidadeCamera;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set tipo(tipo: string) {
+    this._tipo = tipo;
+  }
+
+  public get tipo(): string {
+    return this._tipo;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set nivelBateria(nivelBateria: number) {
+    this._nivelBateria = nivelBateria;
+  }
+
+  public get nivelBateria(): number {
+    return this._nivelBateria;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+
+  public set aplicativos(aplicativos: Aplicativo) {
+    this.aplicativos = aplicativos;
+  }
+
+  public get aplicativos(): Aplicativo {
+    return this.aplicativos;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
   public fazerLigacao(numero: number) {
-    if (this.nivelBateria > 0) {
-      console.log(this.modelo, "Fazendo ligação para o número", numero);
+    if (this._nivelBateria > 0) {
+      console.log(this._modelo, "Fazendo ligação para o número", numero);
       this.consumirBateria(1);
     }
   }
 
   public fotografar() {
-    if (this.nivelBateria > 0) {
-      console.log(this.modelo, "Fotografando");
+    if (this._nivelBateria > 0) {
+      console.log(this._modelo, "Fotografando");
       this.consumirBateria(2);
     }
   }
 
   private consumirBateria(consumo: number) {
     if (this.temBateria()) {
-      this.nivelBateria = 0;
+      this._nivelBateria = 0;
     } else {
-      this.nivelBateria -= consumo;
+      this._nivelBateria -= consumo;
     }
   }
 
   private temBateria(): boolean {
-    return this.nivelBateria > 0;
+    return this._nivelBateria > 0;
   }
 
   public instalar(aplicativo: Aplicativo) {
     if (this.temMemoriaSuficientePara(aplicativo)) {
-      this.aplicativos.push(aplicativo);
+      this._aplicativos.push(aplicativo);
     }
   }
 
   public temMemoriaSuficientePara(aplicativo: Aplicativo) {
     let memoriaUtilizada = 0;
 
-    for (const app of this.aplicativos) {
+    for (const app of this._aplicativos) {
       memoriaUtilizada += app.tamanhoEmMegaBytes;
     }
 
@@ -82,7 +131,7 @@ export class Celular {
 
   public ligar() {
     if (this.temBateria()) {
-      this._ligado = true;
+      this.ligado = true;
       console.log("Ligando...");
     } else {
       console.log("Sem bateria");
@@ -90,7 +139,7 @@ export class Celular {
   }
 
   public desligar() {
-    this._ligado = false;
+    this.ligado = false;
     console.log("Desligando...");
   }
 }

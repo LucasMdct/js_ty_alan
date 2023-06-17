@@ -1,9 +1,26 @@
 export class Aplicativo {
-  nome: string;
-  tamanhoEmMegaBytes: number;
+  private _nome: string;
+  private _tamanhoEmMegaBytes: number;
 
   constructor(nome: string, tamanhoEmMegaBytes: number) {
-    this.nome = nome;
-    this.tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+    this._nome = nome;
+    this._tamanhoEmMegaBytes = tamanhoEmMegaBytes;
   }
+  ////////////////////////////////////////////////////////////////////////////
+  public set nome(nome: string) {
+    this._nome = nome;
+  }
+
+  public get nome(): string {
+    return this._nome;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set tamanhoEmMegaBytes(tamanhoEmMegaBytes: number) {
+    this._tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+  }
+
+  public get tamanhoEmMegaBytes(): number {
+    return this._tamanhoEmMegaBytes;
+  }
+  ////////////////////////////////////////////////////////////////////////////
 }
