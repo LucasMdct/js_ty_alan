@@ -75,12 +75,12 @@ export class Celular {
   }
   ////////////////////////////////////////////////////////////////////////////
 
-  public set aplicativos(aplicativos: Aplicativo) {
-    this.aplicativos = aplicativos;
+  public set aplicativos(aplicativos: Aplicativo[]) {
+    this._aplicativos = aplicativos;
   }
 
-  public get aplicativos(): Aplicativo {
-    return this.aplicativos;
+  public get aplicativos(): Aplicativo[] {
+    return this._aplicativos;
   }
 
   ////////////////////////////////////////////////////////////////////////////
