@@ -1,7 +1,7 @@
 // import { Animal } from "./models/Animal";
 import { Aplicativo } from "./models/Aplicativo";
 import { Celular } from "./models/Celular";
-
+import { cellPhoneStore } from "./models/Celular";
 // let iphone13 = new Celular();
 // iphone13.marca = "Apple";
 // iphone13.modelo = "iPhone 13";
@@ -41,18 +41,46 @@ import { Celular } from "./models/Celular";
 // let cachorro = new Animal("Rex", "Marrom", "Vira-lata", 10, 3);
 // console.log(cachorro);
 
-let linkedin = new Aplicativo("Linkedin", 50);
-console.log(linkedin);
+// let linkedin = new Aplicativo("Linkedin", 50);
+// console.log(linkedin);
 
-let Pocophone = new Celular("Xiaomi", "pocoPhonex5", 256, 200, "Smartphone");
-Pocophone.tipo = "Gamer";
-Pocophone.dataDeFabricacao = new Date();
-Pocophone.ligar();
-console.log(Pocophone);
+// let Pocophone = new Celular("Xiaomi", "pocoPhonex5", 256, 200, "Smartphone");
+// Pocophone.tipo = "Gamer";
+// Pocophone.dataDeFabricacao = new Date();
+// Pocophone.ligar();
+// console.log(Pocophone);
 
-if (Pocophone.marca === "Xiaomi") {
-  console.log("gasta muita bateria");
-}
+// if (Pocophone.marca === "Xiaomi") {
+//   console.log("gasta muita bateria");
+// }
 
-Pocophone.desligar();
-console.log(Pocophone);
+// Pocophone.desligar();
+// console.log(Pocophone);
+
+const store_one = new cellPhoneStore("New Phones", "Avenida Irmãos pereira, 690, Centro ", "Campo Mourão", "Paraná");
+
+store_one.adicionarCelular("Apple Iphone 14 PRO");
+
+store_one.adicionarCelular("Xiaomi Redmi note 13 pro");
+
+store_one.adicionarCelular("Samsung Galaxy S40 pro");
+
+store_one.adicionarCelular("Motorola Moto G 200");
+
+store_one.adicionarCelular("Nokia Tijolão Indestrutivel");
+
+store_one.listarCelularesDisponiveis();
+
+const store_two = new cellPhoneStore("Tech Phones", "Avenida Principal, 25, Centro ", "Farol", "Paraná");
+
+store_two.adicionarCelular("Apple Iphone 12");
+
+store_two.adicionarCelular("Xiaomi Pocophone X3 GT");
+
+store_two.adicionarCelular("Motorola Moto E 60");
+
+store_two.adicionarCelular("Realme C55");
+
+store_two.adicionarCelular("Tecno Pova Neo 2");
+
+store_two.listarCelularesDisponiveis();
