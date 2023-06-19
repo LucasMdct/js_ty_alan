@@ -749,9 +749,18 @@ if (Pocophone.marca === "Xiaomi") {
 Pocophone.desligar();
 console.log(Pocophone);
 ```
+<div align="center">
+<p float="left">
+
+ <img src="https://prnt.sc/BrkQV_0jgBEN" width="200px"/>
+
+</p>
+ </div>
+
+
+
  8 - Criar uma classe que represente uma uma loja de celulares. Uma loja deve ter um nome, endereço, cidade e uma lista de Celulares disponíveis para venda. Deve ser possível adicionais novos celulares e também listar os celulares disponíveis de forma que não seja possível remover celulares da lista.<br>
 ~
-
 
 
 
