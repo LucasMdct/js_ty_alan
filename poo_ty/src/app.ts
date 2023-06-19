@@ -44,14 +44,15 @@ import { Celular } from "./models/Celular";
 let linkedin = new Aplicativo("Linkedin", 50);
 console.log(linkedin);
 
-let iphone13 = new Celular("Apple", "iPhone 13", 256, 12, "Smartphone");
-iphone13.tipo = "Tijolão";
-iphone13.ligar();
-console.log(iphone13);
+let Pocophone = new Celular("Xiaomi", "pocoPhonex5", 256, 200, "Smartphone");
+Pocophone.tipo = "Gamer";
+Pocophone.dataDeFabricacao = new Date();
+Pocophone.ligar();
+console.log(Pocophone);
 
-if (iphone13.marca === "Apple") {
+if (Pocophone.marca === "Xiaomi") {
   console.log("gasta muita bateria");
 }
 
-iphone13.desligar();
-console.log(iphone13);
+Pocophone.desligar();
+console.log(Pocophone);

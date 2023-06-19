@@ -9,13 +9,14 @@ export class Celular {
   private _nivelBateria: number;
   public ligado: boolean;
   private _aplicativos: Aplicativo[];
+  private _dataDeFabricacao: Date;
   ////////////////////////////////////////////////////////////////////////////
   constructor(
     marca: string,
     modelo: string,
     capacidadeMemoriaInterna: number,
     qualidadeCamera: number,
-    tipo: string
+    tipo: string,
   ) {
     this._marca = marca;
     this._modelo = modelo;
@@ -26,6 +27,14 @@ export class Celular {
     this.ligado = false;
     this._aplicativos = [];
   }
+
+  public set dataDeFabricacao(dataDeFabricacao: Date) {
+    this._dataDeFabricacao = dataDeFabricacao;
+  }
+  public get dataDeFabricacao(): Date {
+    return this._dataDeFabricacao = new Date();
+  }
+  ////
   ////////////////////////////////////////////////////////////////////////////
   public set marca(marca: string) {
     this._marca = marca;
@@ -58,6 +67,7 @@ export class Celular {
     return this._qualidadeCamera;
   }
   ////////////////////////////////////////////////////////////////////////////
+
   public set tipo(tipo: string) {
     this._tipo = tipo;
   }

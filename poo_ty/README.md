@@ -145,61 +145,36 @@ export class Aplicativo {
 
 ```
 
-<h5> Arquivo ./src/app.ts </h5>
+<h5> Arquivo ./src/models/Aplicativo.ts </h5>
 
 ```typescript
-// CLASSE CELULAR
-import { Celular } from "./models/Celular";
+export class Aplicativo {
+  private _nome: string;
+  private _tamanhoEmMegaBytes: number;
 
-let Iphone13 = new Celular();
+  constructor(nome: string, tamanhoEmMegaBytes: number) {
+    this._nome = nome;
+    this._tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set nome(nome: string) {
+    this._nome = nome;
+  }
 
-Iphone13.Marca = "Apple";
-Iphone13.capacidadeMemoriaInterna = 500;
-Iphone13.Modelo = "Iphone 13 pro";
-Iphone13.Tipo = "Smartphone";
-Iphone13.qualidadeCamera = 12;
-Iphone13.nivelBateria = 2;
+  public get nome(): string {
+    return this._nome;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set tamanhoEmMegaBytes(tamanhoEmMegaBytes: number) {
+    this._tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+  }
 
-Iphone13.fazerLigacao(193);
-Iphone13.Fotografar();
+  public get tamanhoEmMegaBytes(): number {
+    return this._tamanhoEmMegaBytes;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+}
 
-let redMiNote12 = new Celular();
-
-redMiNote12.Marca = "Xiaomi";
-redMiNote12.capacidadeMemoriaInterna = 256;
-redMiNote12.Modelo = "Xiaomi RedMi Note 12 pro";
-redMiNote12.Tipo = "Smartphone";
-redMiNote12.qualidadeCamera = 200;
-redMiNote12.nivelBateria = 100;
-
-console.log(redMiNote12);
-
-redMiNote12.fazerLigacao(193);
-redMiNote12.Fotografar();
-////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////
-//                      Aplicativo.ts
-/////////////////////////////////////////////////////////////////////
-import { Aplicativo } from "./models/Aplicativo";
-
-let Instagram = new Aplicativo();
-Instagram.Nome = "Instagram";
-Instagram.tamanhoEmMegaBytes = 128;
-
-let Facebook = new Aplicativo();
-facebook.Nome = "Facebook";
-facebook.tamanhoEmMegaBytes = 300;
-
-let Camera = new Aplicativo();
-camera.Nome = "Camera";
-camera.tamanhoEmMegaBytes = 50;
-
-
-iphone13.Instalar(Instagram);
-iphone13.Instalar(Camera);
-
-
-console.log(Iphone13);
 ```
 
 <h4>Construtores</h4>
@@ -556,10 +531,228 @@ export class Celular {
 
 ```
 
- 7 - Criar um atributo que indique a data de fabricação de um celular. Essa data deve ser registrada automaticamente e não pode ser alterada. <br>
+<b> 7 - Criar um atributo que indique a data de fabricação de um celular. Essa data deve ser registrada automaticamente e não pode ser alterada. <br>
+</b>
 
+<h5> Arquivo ./src/models/Celular.ts </h5>
 
+```typescript
+
+import { Aplicativo } from "./Aplicativo";
+////////////////////////////////////////////////////////////////////////////
+export class Celular {
+  private _marca: string;
+  private _modelo: string;
+  private _capacidadeMemoriaInterna: number;
+  private _qualidadeCamera: number;
+  private _tipo: string;
+  private _nivelBateria: number;
+  public ligado: boolean;
+  private _aplicativos: Aplicativo[];
+  private _dataDeFabricacao: Date;
+  ////////////////////////////////////////////////////////////////////////////
+  constructor(
+    marca: string,
+    modelo: string,
+    capacidadeMemoriaInterna: number,
+    qualidadeCamera: number,
+    tipo: string,
+  ) {
+    this._marca = marca;
+    this._modelo = modelo;
+    this._capacidadeMemoriaInterna = capacidadeMemoriaInterna;
+    this._qualidadeCamera = qualidadeCamera;
+    this._tipo = tipo;
+    this._nivelBateria = 100;
+    this.ligado = false;
+    this._aplicativos = [];
+  }
+
+  public set dataDeFabricacao(dataDeFabricacao: Date) {
+    this._dataDeFabricacao = dataDeFabricacao;
+  }
+  public get dataDeFabricacao(): Date {
+    return this._dataDeFabricacao = new Date();
+  }
+  ////
+  ////////////////////////////////////////////////////////////////////////////
+  public set marca(marca: string) {
+    this._marca = marca;
+  }
+  public get marca(): string {
+    return this._marca;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set modelo(modelo: string) {
+    this._modelo = modelo;
+  }
+
+  public get modelo(): string {
+    return this._modelo;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set capacidadeMemoriaInterna(capacidadeMemoriaInterna: number) {
+    this._capacidadeMemoriaInterna = capacidadeMemoriaInterna;
+  }
+
+  public get capacidadeMemoriaInterna(): number {
+    return this._capacidadeMemoriaInterna;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set qualidadeCamera(qualidadeCamera: number) {
+    this._qualidadeCamera = qualidadeCamera;
+  }
+
+  public get qualidadeCamera(): number {
+    return this._qualidadeCamera;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+
+  public set tipo(tipo: string) {
+    this._tipo = tipo;
+  }
+
+  public get tipo(): string {
+    return this._tipo;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set nivelBateria(nivelBateria: number) {
+    this._nivelBateria = nivelBateria;
+  }
+
+  public get nivelBateria(): number {
+    return this._nivelBateria;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+
+  public set aplicativos(aplicativos: Aplicativo[]) {
+    this._aplicativos = aplicativos;
+  }
+
+  public get aplicativos(): Aplicativo[] {
+    return this._aplicativos;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+  public fazerLigacao(numero: number) {
+    if (this._nivelBateria > 0) {
+      console.log(this._modelo, "Fazendo ligação para o número", numero);
+      this.consumirBateria(1);
+    }
+  }
+
+  public fotografar() {
+    if (this._nivelBateria > 0) {
+      console.log(this._modelo, "Fotografando");
+      this.consumirBateria(2);
+    }
+  }
+
+  private consumirBateria(consumo: number) {
+    if (this.temBateria()) {
+      this._nivelBateria = 0;
+    } else {
+      this._nivelBateria -= consumo;
+    }
+  }
+
+  private temBateria(): boolean {
+    return this._nivelBateria > 0;
+  }
+
+  public instalar(aplicativo: Aplicativo) {
+    if (this.temMemoriaSuficientePara(aplicativo)) {
+      this._aplicativos.push(aplicativo);
+    }
+  }
+
+  public temMemoriaSuficientePara(aplicativo: Aplicativo) {
+    let memoriaUtilizada = 0;
+
+    for (const app of this._aplicativos) {
+      memoriaUtilizada += app.tamanhoEmMegaBytes;
+    }
+
+    return (
+      aplicativo.tamanhoEmMegaBytes + memoriaUtilizada <=
+      this.capacidadeMemoriaInterna
+    );
+  }
+
+  public ligar() {
+    if (this.temBateria()) {
+      this.ligado = true;
+      console.log("Ligando...");
+    } else {
+      console.log("Sem bateria");
+    }
+  }
+
+  public desligar() {
+    this.ligado = false;
+    console.log("Desligando...");
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+```
+
+<h5> Arquivo ./src/models/Aplicativo.ts  </h5>
+
+```typescript
+////////////////////////////////////////////////////////////////////////////
+
+export class Aplicativo {
+  private _nome: string;
+  private _tamanhoEmMegaBytes: number;
+
+  constructor(nome: string, tamanhoEmMegaBytes: number) {
+    this._nome = nome;
+    this._tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set nome(nome: string) {
+    this._nome = nome;
+  }
+
+  public get nome(): string {
+    return this._nome;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  public set tamanhoEmMegaBytes(tamanhoEmMegaBytes: number) {
+    this._tamanhoEmMegaBytes = tamanhoEmMegaBytes;
+  }
+
+  public get tamanhoEmMegaBytes(): number {
+    return this._tamanhoEmMegaBytes;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+}
+////////////////////////////////////////////////////////////////////////////
+```
+
+<H5>Arquivo ./src/app.ts</h5>
+
+```typescript
+let linkedin = new Aplicativo("Linkedin", 50);
+console.log(linkedin);
+
+let Pocophone = new Celular("Xiaomi", "pocoPhonex5", 256, 200, "Smartphone");
+Pocophone.tipo = "Gamer";
+Pocophone.dataDeFabricacao = new Date();
+Pocophone.ligar();
+console.log(Pocophone);
+
+if (Pocophone.marca === "Xiaomi") {
+  console.log("gasta muita bateria");
+}
+
+Pocophone.desligar();
+console.log(Pocophone);
+```
  8 - Criar uma classe que represente uma uma loja de celulares. Uma loja deve ter um nome, endereço, cidade e uma lista de Celulares disponíveis para venda. Deve ser possível adicionais novos celulares e também listar os celulares disponíveis de forma que não seja possível remover celulares da lista.<br>
+~
+
+
 
 
 ## Henrança
