@@ -747,12 +747,12 @@ if (Pocophone.marca === "Xiaomi") {
 }
 
 Pocophone.desligar();
-console.log(Pocophone);
+console.log(Pocophone);v
 ```
 <div align="center">
 <p float="left">
 
- <img src="https://prnt.sc/BrkQV_0jgBEN" width="200px"/>
+![Alt text](./consoles/Ex07.png)
 
 </p>
  </div>
