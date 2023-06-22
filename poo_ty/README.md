@@ -864,8 +864,13 @@ store_two.adicionarCelular("Tecno Pova Neo 2");
 
 store_two.listarCelularesDisponiveis();
 ```
+<div align="center">
+<p float="left">
 
 ![Alt text](./consoles/Ex08.png)
+
+</p>
+ </div>
 
 ## Henrança
 
