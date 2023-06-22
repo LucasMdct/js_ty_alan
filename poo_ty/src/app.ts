@@ -1,7 +1,7 @@
 // import { Animal } from "./models/Animal";
 import { Aplicativo } from "./models/Aplicativo";
-import { Celular } from "./models/Celular";
-import { cellPhoneStore } from "./models/Celular";
+import { Celular } from "./models/celular";
+import { cellPhoneStore } from "./models/Loja";
 // let iphone13 = new Celular();
 // iphone13.marca = "Apple";
 // iphone13.modelo = "iPhone 13";

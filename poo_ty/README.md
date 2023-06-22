@@ -760,9 +760,110 @@ console.log(Pocophone);v
 
 
  8 - Criar uma classe que represente uma uma loja de celulares. Uma loja deve ter um nome, endereço, cidade e uma lista de Celulares disponíveis para venda. Deve ser possível adicionais novos celulares e também listar os celulares disponíveis de forma que não seja possível remover celulares da lista.<br>
-~
+
+<H5>Arquivo ./src/Loja.ts</h5>
+
+```typescript
+export class cellPhoneStore {
+  private _name: string;
+  private _address: string;
+  private _city: string;
+  private _state: string;
+  private _cellPhonesAvailable: string[];
+  ///////////////////////////////////////////////////////////////////
+  ///////////       USANDO CONSTRUTOR          /////////////////////
+  constructor(
+    nome: string,
+    endereco: string,
+    cidade: string,
+    estado: string
+  ) {
+    this._name = nome;
+    this._address = endereco;
+    this._city = cidade;
+    this._state = estado;
+    this._cellPhonesAvailable = [];
+  }
+
+  ///////////////////////////////////////////////////////////////////
+  public set name(nome: string) {
+    this._name = nome;
+  }
+  public get name(): string {
+    return this._name;
+  }
+  ///////////////////////////////////////////////////////////////////
+  public set address(endereco: string) {
+    this._address = endereco;
+  }
+  public get address(): string {
+    return this._address;
+  }
+  ///////////////////////////////////////////////////////////////////
+  public set city(cidade: string) {
+    this._city = cidade;
+  }
+  public get city(): string {
+    return this._city;
+  }
+  ///////////////////////////////////////////////////////////////////
+  public set state(estado: string) {
+    this._state = estado;
+  }
+  public get state(): string {
+    return this._state;
+  }
+  ///////////////////////////////////////////////////////////////////
+  public adicionarCelular(celular: string): void {
+    this._cellPhonesAvailable.push(celular);
+  }
+
+  public listarCelularesDisponiveis(): void {
+    console.log("Celulares disponíveis na loja ", this._name, " : ");
 
 
+    for (const celular of this._cellPhonesAvailable) {
+
+      console.log(celular);
+
+    }
+  }
+}
+```
+
+<H5>Arquivo ./src/Loja.ts</h5>
+
+```typescript
+import { cellPhoneStore } from "./models/Loja";
+
+const store_one = new cellPhoneStore("New Phones", "Avenida Irmãos pereira, 690, Centro ", "Campo Mourão", "Paraná");
+
+store_one.adicionarCelular("Apple Iphone 14 PRO");
+
+store_one.adicionarCelular("Xiaomi Redmi note 13 pro");
+
+store_one.adicionarCelular("Samsung Galaxy S40 pro");
+
+store_one.adicionarCelular("Motorola Moto G 200");
+
+store_one.adicionarCelular("Nokia Tijolão Indestrutivel");
+
+store_one.listarCelularesDisponiveis();
+
+const store_two = new cellPhoneStore("Tech Phones", "Avenida Principal, 25, Centro ", "Farol", "Paraná");
+
+store_two.adicionarCelular("Apple Iphone 12");
+
+store_two.adicionarCelular("Xiaomi Pocophone X3 GT");
+
+store_two.adicionarCelular("Motorola Moto E 60");
+
+store_two.adicionarCelular("Realme C55");
+
+store_two.adicionarCelular("Tecno Pova Neo 2");
+
+store_two.listarCelularesDisponiveis();
+```
 
 ## Henrança
 
