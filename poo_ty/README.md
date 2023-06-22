@@ -864,6 +864,7 @@ store_two.adicionarCelular("Tecno Pova Neo 2");
 
 store_two.listarCelularesDisponiveis();
 ```
+
 <div align="center">
 <p float="left">
 
