@@ -865,6 +865,8 @@ store_two.adicionarCelular("Tecno Pova Neo 2");
 store_two.listarCelularesDisponiveis();
 ```
 
+![Alt text](./consoles/Ex08.png)
+
 ## Henrança
 
 ## Polimorfismo
